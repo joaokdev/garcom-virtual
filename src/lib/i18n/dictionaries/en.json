@@ -1,0 +1,112 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "retry": "Try again",
+    "close": "Close",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "back": "Back",
+    "minutes": "min"
+  },
+  "header": {
+    "callWaiter": "Call waiter",
+    "requestBill": "Request bill",
+    "myOrders": "My orders",
+    "settings": "Settings"
+  },
+  "menu": {
+    "searchPlaceholder": "Search the menu",
+    "chefRecommendation": "Chef's recommendation",
+    "recommendedForYou": "Recommended for you",
+    "unavailable": "Sold out",
+    "from": "from",
+    "emptyCategory": "No items in this category yet.",
+    "noResults": "No dishes found for \"{query}\"."
+  },
+  "itemDetail": {
+    "quantity": "Quantity",
+    "notesLabel": "Any special requests?",
+    "notesPlaceholder": "e.g. no onions, well done, etc.",
+    "required": "Required",
+    "optional": "Optional",
+    "chooseUpTo": "Choose up to {n}",
+    "chooseOne": "Choose 1 option",
+    "addForPrice": "Add · {price}",
+    "prepTime": "{min} min prep time"
+  },
+  "cart": {
+    "title": "Your order",
+    "empty": "Your order is empty",
+    "emptyHint": "Tap a dish on the menu to get started.",
+    "subtotal": "Subtotal",
+    "serviceFee": "Service fee ({pct}%)",
+    "total": "Total",
+    "sendOrder": "Send order",
+    "sending": "Sending...",
+    "itemAdded": "{name} added to your order",
+    "orderNotesLabel": "Order note (optional)",
+    "remove": "Remove",
+    "addMore": "Add more items"
+  },
+  "orderConfirmation": {
+    "title": "Order sent!",
+    "ticketNumber": "Order #{n}",
+    "estimate": "Estimated prep time: {min} min",
+    "trackStatus": "Track order",
+    "continueOrdering": "Keep ordering"
+  },
+  "orderStatus": {
+    "received": "Received",
+    "preparing": "Preparing",
+    "ready": "Ready",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled"
+  },
+  "waiterCall": {
+    "confirmTitle": "Call the waiter?",
+    "confirmBody": "Staff will be notified and will come to your table.",
+    "confirmAction": "Yes, call",
+    "sent": "Waiter notified! They're on their way.",
+    "alreadyCalled": "We already notified staff — someone will be with you shortly."
+  },
+  "billRequest": {
+    "title": "Request the bill",
+    "subtitle": "How would you like to pay?",
+    "cash": "Cash",
+    "card": "Card",
+    "pix": "Pix",
+    "noPreference": "No preference",
+    "confirmAction": "Confirm and request bill",
+    "sent": "Bill requested! Staff will come finish up at your table.",
+    "alreadyRequested": "Your bill has already been requested and is being prepared."
+  },
+  "feedback": {
+    "title": "How was your experience?",
+    "subtitle": "Your feedback helps the restaurant improve.",
+    "ratingLabel": "Your rating",
+    "commentPlaceholder": "Want to add anything else? (optional)",
+    "submit": "Send feedback",
+    "thanks": "Thanks for your feedback!",
+    "skip": "Not now"
+  },
+  "orderHistory": {
+    "title": "My orders",
+    "empty": "You haven't placed any orders here yet.",
+    "itemsCount": "{n} item(s)",
+    "placedAt": "Ordered at {time}"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Appearance",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "Automatic"
+  },
+  "errors": {
+    "invalidTable": "We couldn't find this table. Ask staff for help or scan the QR code again.",
+    "restaurantNotFound": "Restaurant not found.",
+    "networkError": "Couldn't connect. Check your internet and try again.",
+    "genericError": "Something went wrong. Please try again shortly."
+  }
+}

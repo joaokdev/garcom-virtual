@@ -1,0 +1,112 @@
+{
+  "common": {
+    "loading": "Carregando...",
+    "retry": "Tentar novamente",
+    "close": "Fechar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "back": "Voltar",
+    "minutes": "min"
+  },
+  "header": {
+    "callWaiter": "Chamar garçom",
+    "requestBill": "Pedir a conta",
+    "myOrders": "Meus pedidos",
+    "settings": "Ajustes"
+  },
+  "menu": {
+    "searchPlaceholder": "Buscar no cardápio",
+    "chefRecommendation": "Sugestão do chef",
+    "recommendedForYou": "Recomendado para você",
+    "unavailable": "Esgotado",
+    "from": "a partir de",
+    "emptyCategory": "Nenhum item nesta categoria por enquanto.",
+    "noResults": "Nenhum prato encontrado para \"{query}\"."
+  },
+  "itemDetail": {
+    "quantity": "Quantidade",
+    "notesLabel": "Alguma observação?",
+    "notesPlaceholder": "Ex.: sem cebola, ponto da carne, etc.",
+    "required": "Obrigatório",
+    "optional": "Opcional",
+    "chooseUpTo": "Escolha até {n}",
+    "chooseOne": "Escolha 1 opção",
+    "addForPrice": "Adicionar · {price}",
+    "prepTime": "{min} min de preparo"
+  },
+  "cart": {
+    "title": "Sua comanda",
+    "empty": "Sua comanda está vazia",
+    "emptyHint": "Toque em um prato do cardápio para começar.",
+    "subtotal": "Subtotal",
+    "serviceFee": "Taxa de serviço ({pct}%)",
+    "total": "Total",
+    "sendOrder": "Enviar pedido",
+    "sending": "Enviando...",
+    "itemAdded": "{name} adicionado à comanda",
+    "orderNotesLabel": "Observação geral do pedido (opcional)",
+    "remove": "Remover",
+    "addMore": "Adicionar mais itens"
+  },
+  "orderConfirmation": {
+    "title": "Pedido enviado!",
+    "ticketNumber": "Comanda nº {n}",
+    "estimate": "Tempo estimado de preparo: {min} min",
+    "trackStatus": "Acompanhar pedido",
+    "continueOrdering": "Continuar pedindo"
+  },
+  "orderStatus": {
+    "received": "Recebido",
+    "preparing": "Em preparo",
+    "ready": "Pronto",
+    "delivered": "Entregue",
+    "cancelled": "Cancelado"
+  },
+  "waiterCall": {
+    "confirmTitle": "Chamar o garçom?",
+    "confirmBody": "A equipe será avisada e virá até sua mesa.",
+    "confirmAction": "Sim, chamar",
+    "sent": "Garçom avisado! Ele(a) já está vindo até você.",
+    "alreadyCalled": "Já avisamos a equipe — alguém vem até você em breve."
+  },
+  "billRequest": {
+    "title": "Pedir a conta",
+    "subtitle": "Como você prefere pagar?",
+    "cash": "Dinheiro",
+    "card": "Cartão",
+    "pix": "Pix",
+    "noPreference": "Sem preferência",
+    "confirmAction": "Confirmar e pedir a conta",
+    "sent": "Conta solicitada! A equipe vai até sua mesa para finalizar.",
+    "alreadyRequested": "Sua conta já foi solicitada e está sendo preparada."
+  },
+  "feedback": {
+    "title": "Como foi sua experiência?",
+    "subtitle": "Sua opinião ajuda o restaurante a melhorar.",
+    "ratingLabel": "Sua nota",
+    "commentPlaceholder": "Quer contar mais alguma coisa? (opcional)",
+    "submit": "Enviar avaliação",
+    "thanks": "Obrigado pelo seu feedback!",
+    "skip": "Agora não"
+  },
+  "orderHistory": {
+    "title": "Meus pedidos",
+    "empty": "Você ainda não fez nenhum pedido por aqui.",
+    "itemsCount": "{n} item(ns)",
+    "placedAt": "Pedido às {time}"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "language": "Idioma",
+    "theme": "Aparência",
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Automático"
+  },
+  "errors": {
+    "invalidTable": "Não encontramos esta mesa. Chame a equipe ou escaneie o QR Code novamente.",
+    "restaurantNotFound": "Restaurante não encontrado.",
+    "networkError": "Não foi possível conectar. Verifique sua internet e tente novamente.",
+    "genericError": "Algo deu errado. Tente novamente em instantes."
+  }
+}

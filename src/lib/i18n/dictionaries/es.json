@@ -1,0 +1,112 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "retry": "Intentar de nuevo",
+    "close": "Cerrar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "back": "Volver",
+    "minutes": "min"
+  },
+  "header": {
+    "callWaiter": "Llamar al mesero",
+    "requestBill": "Pedir la cuenta",
+    "myOrders": "Mis pedidos",
+    "settings": "Ajustes"
+  },
+  "menu": {
+    "searchPlaceholder": "Buscar en el menú",
+    "chefRecommendation": "Sugerencia del chef",
+    "recommendedForYou": "Recomendado para ti",
+    "unavailable": "Agotado",
+    "from": "desde",
+    "emptyCategory": "Todavía no hay platos en esta categoría.",
+    "noResults": "No se encontraron platos para \"{query}\"."
+  },
+  "itemDetail": {
+    "quantity": "Cantidad",
+    "notesLabel": "¿Alguna observación?",
+    "notesPlaceholder": "Ej.: sin cebolla, término de la carne, etc.",
+    "required": "Obligatorio",
+    "optional": "Opcional",
+    "chooseUpTo": "Elige hasta {n}",
+    "chooseOne": "Elige 1 opción",
+    "addForPrice": "Agregar · {price}",
+    "prepTime": "{min} min de preparación"
+  },
+  "cart": {
+    "title": "Tu comanda",
+    "empty": "Tu comanda está vacía",
+    "emptyHint": "Toca un plato del menú para empezar.",
+    "subtotal": "Subtotal",
+    "serviceFee": "Cargo por servicio ({pct}%)",
+    "total": "Total",
+    "sendOrder": "Enviar pedido",
+    "sending": "Enviando...",
+    "itemAdded": "{name} agregado a tu comanda",
+    "orderNotesLabel": "Nota del pedido (opcional)",
+    "remove": "Quitar",
+    "addMore": "Agregar más platos"
+  },
+  "orderConfirmation": {
+    "title": "¡Pedido enviado!",
+    "ticketNumber": "Comanda n.º {n}",
+    "estimate": "Tiempo estimado: {min} min",
+    "trackStatus": "Seguir pedido",
+    "continueOrdering": "Seguir pidiendo"
+  },
+  "orderStatus": {
+    "received": "Recibido",
+    "preparing": "En preparación",
+    "ready": "Listo",
+    "delivered": "Entregado",
+    "cancelled": "Cancelado"
+  },
+  "waiterCall": {
+    "confirmTitle": "¿Llamar al mesero?",
+    "confirmBody": "El personal será avisado y vendrá a tu mesa.",
+    "confirmAction": "Sí, llamar",
+    "sent": "¡Mesero avisado! Ya viene en camino.",
+    "alreadyCalled": "Ya avisamos al personal — alguien vendrá pronto."
+  },
+  "billRequest": {
+    "title": "Pedir la cuenta",
+    "subtitle": "¿Cómo prefieres pagar?",
+    "cash": "Efectivo",
+    "card": "Tarjeta",
+    "pix": "Pix",
+    "noPreference": "Sin preferencia",
+    "confirmAction": "Confirmar y pedir la cuenta",
+    "sent": "¡Cuenta solicitada! El personal vendrá a finalizar en tu mesa.",
+    "alreadyRequested": "Tu cuenta ya fue solicitada y está siendo preparada."
+  },
+  "feedback": {
+    "title": "¿Cómo fue tu experiencia?",
+    "subtitle": "Tu opinión ayuda al restaurante a mejorar.",
+    "ratingLabel": "Tu calificación",
+    "commentPlaceholder": "¿Quieres contarnos algo más? (opcional)",
+    "submit": "Enviar evaluación",
+    "thanks": "¡Gracias por tu opinión!",
+    "skip": "Ahora no"
+  },
+  "orderHistory": {
+    "title": "Mis pedidos",
+    "empty": "Todavía no has hecho ningún pedido aquí.",
+    "itemsCount": "{n} ítem(s)",
+    "placedAt": "Pedido a las {time}"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "language": "Idioma",
+    "theme": "Apariencia",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Automático"
+  },
+  "errors": {
+    "invalidTable": "No encontramos esta mesa. Pide ayuda al personal o escanea el código QR de nuevo.",
+    "restaurantNotFound": "Restaurante no encontrado.",
+    "networkError": "No se pudo conectar. Revisa tu internet e intenta de nuevo.",
+    "genericError": "Algo salió mal. Intenta de nuevo en un momento."
+  }
+}

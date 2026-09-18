@@ -1,0 +1,332 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Paleta quente — "cozinha premium", não Excel cinza */
+  --color-stone: #F5F1EC;
+  --color-paper: #FEFCFA;
+  --color-ink: #1C1410;
+  --color-ink-soft: #705A4E;
+  --color-ink-faint: #B09A8E;
+  --color-line: #E8DDD5;
+
+  /* Marca: injetada por restaurante em runtime — fallback apenas */
+  --color-brand: var(--brand, #E05C2A);
+  --color-brand-foreground: var(--brand-foreground, #FEFCFA);
+  --color-accent: var(--accent, #1A4D3A);
+  --color-accent-foreground: var(--accent-foreground, #F0EDE8);
+
+  --color-success: #1E6B42;
+  --color-danger: #C1392B;
+
+  --font-display: "Fraunces Variable", ui-serif, georgia, serif;
+  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  /* Aliases legados: apontam para a escala nova (definida mais abaixo em
+     @theme) em vez de duplicar valores. Ficam porque ~30 arquivos ainda os
+     usam; mudar a escala nova agora muda o produto inteiro num lugar só. */
+  --radius-card: var(--radius-lg);
+  --radius-sheet: var(--radius-xl);
+  --radius-pill: 999px;
+
+  --shadow-card: var(--shadow-sm);
+  --shadow-lift: var(--shadow-md);
+  --shadow-floating: var(--shadow-lg);
+
+  /* "Sala de controle" — Cozinha, Garçom, Financeiro, Admin.
+     Telas de operação da equipe: sempre escuras, independente do tema
+     claro/escuro do módulo Cliente (a equipe trabalha em ambiente de
+     cozinha/salão, não precisa seguir o tema do cliente na mesa).
+     Consolidado aqui porque antes cada tela repetia os mesmos hex
+     soltos (auditoria encontrou os mesmos 6 tons duplicados em 5
+     arquivos, além de azul/verde do Tailwind puro sem relação com a
+     marca). */
+  --color-well: #0D0B0A;
+  --color-well-surface: #1D1714;
+  --color-well-surface-hover: #2A221E;
+  --color-well-border: #2D2520;
+  --color-well-border-dim: #33291F;
+  --color-well-ink: #F2ECE5;
+  --color-well-ink-soft: #A8917F;
+  --color-well-ink-faint: #6B5548;
+  --color-well-ink-subtle: #4A3E37;
+  --color-well-watermark: #3D332C; /* marca da plataforma, discreta e fixa, independente da cor do restaurante */
+
+  /* Identidade por módulo (usada no PinLogin e nos status da Cozinha/Garçom) */
+  --color-info: #3B82F6;        /* Garçom + status "em preparo" */
+  --color-success-strong: #22C55E; /* status "pronto" — mais vívido que --color-success sobre fundo quase-preto */
+  --color-admin: #8B5CF6;       /* módulo Admin/gestão de produtos */
+}
+
+.dark {
+  --color-stone: #120E0C;
+  --color-paper: #1D1714;
+  --color-ink: #F2ECE5;
+  --color-ink-soft: #A8917F;
+  --color-ink-faint: #6B5548;
+  --color-line: #2D2520;
+
+  --shadow-card: var(--shadow-sm);
+  --shadow-lift: var(--shadow-md);
+  --shadow-floating: var(--shadow-lg);
+}
+
+* { border-color: var(--color-line); }
+
+html { -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
+
+body {
+  background: var(--color-stone);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--color-brand);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.scroll-no-bar { scrollbar-width: none; -ms-overflow-style: none; }
+.scroll-no-bar::-webkit-scrollbar { display: none; }
+
+/* Borda picotada — assinatura visual da comanda/ticket de cozinha */
+.ticket-edge-bottom {
+  --notch: 12px;
+  mask-image:
+    radial-gradient(circle at var(--notch) bottom, transparent calc(var(--notch) - 0.5px), black calc(var(--notch) + 0.5px)),
+    linear-gradient(black, black);
+  mask-size: calc(var(--notch) * 2) 100%, 100% 100%;
+  mask-repeat: repeat-x, no-repeat;
+  mask-position: bottom, top;
+  mask-composite: intersect;
+  -webkit-mask-image:
+    radial-gradient(circle at var(--notch) bottom, transparent calc(var(--notch) - 0.5px), black calc(var(--notch) + 0.5px)),
+    linear-gradient(black, black);
+  -webkit-mask-size: calc(var(--notch) * 2) 100%, 100% 100%;
+  -webkit-mask-repeat: repeat-x, no-repeat;
+  -webkit-mask-position: bottom, top;
+  -webkit-mask-composite: source-in;
+}
+
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.safe-top { padding-top: env(safe-area-inset-top, 0px); }
+
+/* Overlay gradiente nas imagens dos cards */
+.image-gradient::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgb(28 20 16 / 0.65) 100%
+  );
+  border-radius: inherit;
+}
+
+/* ============================================================
+   DESIGN SYSTEM v2 — FASE 2: MATERIAL SYSTEM + TYPOGRAPHY SCALE
+   Fundação do redesign Apple-inspired. Aditivo — nada acima foi
+   removido, então nenhuma tela quebra até ser migrada tela a tela
+   (fases 6+). Ver /AUDIT.md para o raciocínio completo e o roadmap
+   de fases restantes.
+   ============================================================ */
+
+@theme {
+  /* Hierarquia de raios — comunica escala do componente, não decoração.
+     Mantemos --radius-card/--radius-sheet (usados em ~30 arquivos) como
+     aliases para não quebrar nada; novo código usa a escala abaixo. */
+  --radius-xs: 0.5rem;    /* chips, badges pequenos */
+  --radius-sm: 0.75rem;   /* inputs, botões pequenos */
+  --radius-md: 1rem;      /* botões, controles */
+  --radius-lg: 1.25rem;   /* cards de conteúdo */
+  --radius-xl: 1.75rem;   /* sheets, superfícies grandes */
+  --radius-pill: 999px;
+
+  /* Sombra: contraste + borda fazem o trabalho pesado; sombra é o
+     acabamento final, não a fonte da profundidade. */
+  --shadow-xs: 0 1px 2px rgb(28 20 16 / 0.05);
+  --shadow-sm: 0 1px 3px rgb(28 20 16 / 0.06), 0 4px 12px -4px rgb(28 20 16 / 0.10);
+  --shadow-md: 0 2px 6px rgb(28 20 16 / 0.08), 0 12px 28px -10px rgb(28 20 16 / 0.16);
+  --shadow-lg: 0 4px 12px rgb(28 20 16 / 0.10), 0 24px 48px -16px rgb(28 20 16 / 0.22);
+}
+
+.dark {
+  --shadow-xs: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-sm: 0 1px 3px rgb(0 0 0 / 0.35), 0 4px 12px -4px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 2px 6px rgb(0 0 0 / 0.4), 0 12px 28px -10px rgb(0 0 0 / 0.5);
+  --shadow-lg: 0 4px 12px rgb(0 0 0 / 0.45), 0 24px 48px -16px rgb(0 0 0 / 0.6);
+}
+
+/* ---- Materiais: camada 3 (navegação, sheets, toolbars, overlays) ----
+   Regra do prompt-mestre (§5, §6): vidro só em elementos FUNCIONAIS e
+   flutuantes — nunca no conteúdo (produtos, texto, tabelas) e nunca dois
+   materiais translúcidos empilhados (a legibilidade colapsa). Cada nível
+   é mais "espesso" (mais blur/saturação/opacidade) conforme a superfície
+   fica maior — ver apple-design skill §12. */
+.material-ultra-thin {
+  background: rgb(254 252 250 / 0.55);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgb(255 255 255 / 0.35);
+}
+.material-thin {
+  background: rgb(254 252 250 / 0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgb(255 255 255 / 0.4);
+}
+.material-regular {
+  background: rgb(254 252 250 / 0.85);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgb(255 255 255 / 0.45);
+  box-shadow: var(--shadow-sm);
+}
+.material-thick {
+  background: rgb(254 252 250 / 0.94);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid rgb(255 255 255 / 0.5);
+  box-shadow: var(--shadow-md);
+}
+
+.dark .material-ultra-thin { background: rgb(29 23 20 / 0.45); border-color: rgb(255 255 255 / 0.06); }
+.dark .material-thin { background: rgb(29 23 20 / 0.62); border-color: rgb(255 255 255 / 0.08); }
+.dark .material-regular { background: rgb(29 23 20 / 0.78); border-color: rgb(255 255 255 / 0.09); }
+.dark .material-thick { background: rgb(29 23 20 / 0.92); border-color: rgb(255 255 255 / 0.1); }
+
+/* "Sala de controle" (Cozinha/Garçom/Financeiro/Admin) é sempre escura —
+   materiais equivalentes sobre --color-well, com estrutura mais opaca
+   (§26 do prompt: sidebar não deve ser vidro pesado, e a operação exige
+   contraste alto mesmo com o material por cima). */
+.material-well-thin {
+  background: rgb(29 23 20 / 0.55);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgb(255 255 255 / 0.06);
+}
+.material-well-regular {
+  background: rgb(29 23 20 / 0.82);
+  backdrop-filter: blur(28px) saturate(140%);
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
+  border: 1px solid rgb(255 255 255 / 0.07);
+  box-shadow: var(--shadow-md);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .material-ultra-thin, .material-thin, .material-regular, .material-thick {
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+    background: var(--color-paper);
+  }
+  .material-well-thin, .material-well-regular {
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+    background: var(--color-well-surface);
+  }
+}
+
+/* ---- Iluminação ambiente: extremamente sutil, nunca compete com o
+   conteúdo (§12 do prompt). Aplicar em containers de tela, não em cards. */
+.ambient-light {
+  position: relative;
+  isolation: isolate;
+}
+.ambient-light::before {
+  content: '';
+  /* `fixed`, não `absolute`: a luz é do ambiente, não do documento — num
+     cardápio longo ela ficaria pra trás ao rolar. `inset: 0` (em vez de
+     valores negativos) evita estourar a largura e criar scroll horizontal
+     no tablet. */
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 80% 50% at 10% -10%, color-mix(in srgb, var(--color-brand) 7%, transparent), transparent 60%),
+    radial-gradient(ellipse 70% 45% at 110% 10%, color-mix(in srgb, var(--color-accent) 5%, transparent), transparent 60%);
+  pointer-events: none;
+}
+
+/* ---- Escala tipográfica ----
+   Tracking e leading variam com o tamanho (apple-design skill §15):
+   texto grande fecha o tracking e aperta o leading; texto pequeno abre
+   o tracking e folga o leading. font-display continua servindo os
+   tamanhos "Display/Large Title" (identidade editorial do produto);
+   font-body assume a partir de "Title" para dentro — é onde a leitura
+   em UI de verdade acontece. */
+.text-display {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw + 1rem, 4.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+.text-large-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 2vw + 1.25rem, 2.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+.text-title {
+  font-family: var(--font-body);
+  font-size: 1.375rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+.text-headline {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  font-weight: 600;
+}
+.text-body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+.text-callout {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+.text-subheadline {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  letter-spacing: 0.002em;
+  font-weight: 500;
+}
+.text-footnote {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  letter-spacing: 0.005em;
+  font-weight: 500;
+}
+.text-caption {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  font-weight: 600;
+  text-transform: uppercase;
+}

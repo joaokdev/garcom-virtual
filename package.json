@@ -1,0 +1,45 @@
+{
+  "name": "comanda",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Comanda — Cardápio digital para tablets de mesa. Módulo Cliente de uma plataforma SaaS multi-restaurante.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "start:prod": "node scripts/ensure-db.mjs && next start",
+    "lint": "eslint .",
+    "db:setup": "node scripts/ensure-db.mjs",
+    "db:seed": "node scripts/seed.mjs",
+    "db:reset": "node scripts/reset-db.mjs && npm run db:seed"
+  },
+  "dependencies": {
+    "@fontsource-variable/fraunces": "^5.1.1",
+    "@fontsource/jetbrains-mono": "^5.1.2",
+    "@fontsource/plus-jakarta-sans": "^5.1.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.15.0",
+    "lucide-react": "^0.469.0",
+    "next": "16.2.9",
+    "pg": "^8.13.1",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "recharts": "^2.15.4",
+    "zod": "^3.24.1",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.1",
+    "@types/node": "^22.10.5",
+    "@types/pg": "^8.11.10",
+    "@types/react": "^19.0.4",
+    "@types/react-dom": "^19.0.2",
+    "eslint": "^9.18.0",
+    "eslint-config-next": "16.2.9",
+    "tailwindcss": "^4.3.1",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  }
+}

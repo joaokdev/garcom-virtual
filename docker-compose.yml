@@ -1,0 +1,29 @@
+# Sobe um PostgreSQL local para desenvolvimento.
+# Uso: docker compose up -d db
+#      cp .env.example .env   (já aponta para este banco por padrão)
+#      npm run db:setup && npm run db:seed
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: comanda
+      POSTGRES_PASSWORD: comanda
+      POSTGRES_DB: comanda
+    ports:
+      - "5432:5432"
+    volumes:
+      - comanda_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U comanda"]
+      interval: 3s
+      timeout: 5s
+      retries: 10
+      # Dá tempo para o initdb (primeira subida do container, quando o
+      # volume ainda está vazio) terminar antes de contar falhas de
+      # healthcheck — sem isso, "iniciar.sh"/"iniciar.bat" podem desistir
+      # de esperar mesmo com o banco subindo normalmente, só mais devagar.
+      start_period: 20s
+
+volumes:
+  comanda_pgdata:
