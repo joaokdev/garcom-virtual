@@ -29,7 +29,23 @@ O projeto não está finalizado e continuará evoluindo conforme novos conhecime
 
 Mais do que chegar a uma versão final, a proposta é documentar uma evolução contínua: aprender, construir, testar, corrigir e melhorar.  
 
+Hoje a IA escreve código, cria tela, conecta API, encontra erro e até sugere arquitetura.
 
+Isso faz um bom programador ficar absurdamente mais rápido.
+
+Mas também faz alguém sem fundamento conseguir ir longe o suficiente para criar um problema que não sabe resolver.
+
+Enquanto tudo funciona, parece mágica.
+
+Quando quebra em produção, não existe prompt bonito que substitua saber o que está acontecendo por baixo.
+
+A tendência não é o programador desaparecer.
+
+É o programador que entende o que está fazendo + sabe usar IA abrir cada vez mais distância de quem só copia a resposta e torce para funcionar.
+
+No final, a IA pode até escrever o código.
+
+Mas ainda é você que precisa saber se aquilo faz sentido
 
 
 O Comanda é um sistema desenvolvido para ser utilizado diretamente nos tablets disponibilizados nas mesas do restaurante.
